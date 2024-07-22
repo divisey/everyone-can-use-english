@@ -644,5 +644,19 @@
   "continueLearning": "Continue learning",
   "enrollNow": "Enroll now",
   "enrollments": "Enrollments",
-  "noLikesYet": "No likes yet"
+  "noLikesYet": "No likes yet",
+  "lookupOnMouseOver": "Lookup On MouseOver",
+  "selectDictFile": "Select Dict Files (extension with .mdx and .mdd files)",
+  "dictFiles": "Dict Files",
+  "dictFileRequired": "Dict file (the extension is mdx) not found.",
+  "dictFileExist": "{{name}} has already been imported",
+  "dictFileAddSuccess": "Add {{name}} successfully",
+  "dictFileRemoveSuccess": "Remove {{name}} successfully",
+  "dictFileSetDefaultSuccess": "Set default successfully",
+  "dictionaries": "Dictionaries",
+  "import": "Import",
+  "default": "Default",
+  "setDefault": "Set Default",
+  "dictSettings": "Dict Settings",
+  "dictSettingsShort": "Dict Settings"
 }

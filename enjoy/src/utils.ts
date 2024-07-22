@@ -127,3 +127,7 @@ export const convertIpaToNormal = (
     return converted;
   }
 };
+
+export function getExtension(filename: string, defaultExt: string) {
+  return /(?:\.([^.]+))?$/.exec(filename)[1] || defaultExt;
+}

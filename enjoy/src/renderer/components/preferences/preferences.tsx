@@ -17,6 +17,8 @@ import {
   ResetAllSettings,
   NativeLanguageSettings,
   LearningLanguageSettings,
+  VocabularySettings,
+  DictSettings,
 } from "@renderer/components";
 import { useState } from "react";
 import { Tooltip } from "react-tooltip";
@@ -43,6 +45,21 @@ export const Preferences = () => {
           <OpenaiSettings />
           <Separator />
           <GoogleGenerativeAiSettings />
+          <Separator />
+        </div>
+      ),
+    },
+    {
+      value: "dict",
+      label: t("dictSettingsShort"),
+      component: () => (
+        <div className="pr-1">
+          <div className="font-semibold mb-4 capitilized">
+            {t("dictSettings")}
+          </div>
+          <VocabularySettings />
+          <Separator />
+          <DictSettings />
           <Separator />
         </div>
       ),

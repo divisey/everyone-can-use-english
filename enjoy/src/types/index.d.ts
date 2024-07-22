@@ -156,6 +156,10 @@ type ProxyConfigType = {
   url: string;
 };
 
+type VocabularyConfigType = {
+  lookupOnMouseOver: boolean;
+};
+
 type YoutubeVideoType = {
   title: string;
   thumbnail: string;
@@ -174,4 +178,18 @@ type GptEngineSettingType = {
   };
   baseUrl?: string;
   key?: string;
+};
+
+type DictSettingItem = {
+  name: string;
+  path: string;
+  description: string;
+  isKeyCaseSensitive: string;
+  title: string;
+  resources: string[];
+};
+
+type DictSettingType = {
+  default: string;
+  items: DictSettingItem[];
 };

@@ -76,10 +76,16 @@ type EnjoyAppType = {
   onNotification: (
     callback: (event, notification: NotificationType) => void
   ) => void;
+  lookup: (
+    selection: string,
+    context: string,
+    position: { x: number; y: number }
+  ) => void;
   onLookup: (
     callback: (
-      event,
+      event: IpcRendererEvent,
       selection: string,
+      context: string,
       position: { x: number; y: number }
     ) => void
   ) => void;
@@ -128,8 +134,12 @@ type EnjoyAppType = {
     switchLanguage: (language: string) => Promise<void>;
     getDefaultHotkeys: () => Promise<Record<string, string> | undefined>;
     setDefaultHotkeys: (records: Record<string, string>) => Promise<void>;
+    getDicts: () => Promise<DictSettingType>;
+    setDicts: (dict: DictSettingType) => Promise<void>;
     getApiUrl: () => Promise<string>;
     setApiUrl: (url: string) => Promise<void>;
+    getVocabularyConfig: () => Promise<VocabularyConfigType | undefined>;
+    setVocabularyConfig: (records: VocabularyConfigType) => Promise<void>;
   };
   fs: {
     ensureDir: (path: string) => Promise<boolean>;
@@ -146,6 +156,11 @@ type EnjoyAppType = {
   };
   camdict: {
     lookup: (word: string) => Promise<CamdictWordType | null>;
+  };
+  dict: {
+    read: (path: string) => Promise<Dict | null>;
+    lookup: (word: string, dict: string) => Promise<DictResultType | null>;
+    findResource: (key: string, resources: string[]) => Promise<string | null>;
   };
   audios: {
     findAll: (params: any) => Promise<AudioType[]>;

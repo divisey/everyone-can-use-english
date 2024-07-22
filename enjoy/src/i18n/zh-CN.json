@@ -644,5 +644,19 @@
   "continueLearning": "继续练习",
   "enrollNow": "加入练习",
   "enrollments": "参加的课程",
-  "noLikesYet": "还没有点赞"
+  "noLikesYet": "还没有点赞",
+  "lookupOnMouseOver": "鼠标悬停查询单词",
+  "selectDictFile": "选择字典文件 (扩展名为 .mdx 和 .mdd 的文件)",
+  "dictFiles": "字典文件",
+  "dictFileRequired": "未找到字典文件 (扩展名为 .mdx 的文件是必须的) ",
+  "dictFileExist": "{{name}} 已经存在了",
+  "dictFileAddSuccess": "已添加 {{name}}",
+  "dictFileRemoveSuccess": "已删除 {{name}}",
+  "dictFileSetDefaultSuccess": "设置成功",
+  "dictionaries": "字典",
+  "import": "导入",
+  "default": "默认",
+  "setDefault": "设为默认",
+  "dictSettings": "词典设置",
+  "dictSettingsShort": "词典设置"
 }

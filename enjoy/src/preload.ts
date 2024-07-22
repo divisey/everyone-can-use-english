@@ -134,10 +134,16 @@ contextBridge.exposeInMainWorld("__ENJOY_APP__", {
   onNotification: (
     callback: (event: IpcRendererEvent, notification: NotificationType) => void
   ) => ipcRenderer.on("on-notification", callback),
+  lookup: (
+    selection: string,
+    context: string,
+    position: { x: number; y: number }
+  ) => ipcRenderer.emit("on-lookup", null, selection, context, position),
   onLookup: (
     callback: (
       event: IpcRendererEvent,
       selection: string,
+      context: string,
       position: { x: number; y: number }
     ) => void
   ) => ipcRenderer.on("on-lookup", callback),
@@ -151,6 +157,9 @@ contextBridge.exposeInMainWorld("__ENJOY_APP__", {
       position: { x: number; y: number }
     ) => void
   ) => ipcRenderer.on("on-translate", callback),
+  offTranslate: () => {
+    ipcRenderer.removeAllListeners("on-translate");
+  },
   shell: {
     openExternal: (url: string) =>
       ipcRenderer.invoke("shell-open-external", url),
@@ -218,11 +227,23 @@ contextBridge.exposeInMainWorld("__ENJOY_APP__", {
     setDefaultHotkeys: (records: Record<string, string>) => {
       return ipcRenderer.invoke("settings-set-default-hotkeys", records);
     },
+    getDicts: () => {
+      return ipcRenderer.invoke("settings-get-dict");
+    },
+    setDicts: (dict: DictSettingType) => {
+      return ipcRenderer.invoke("settings-set-dicts", dict);
+    },
     getApiUrl: () => {
       return ipcRenderer.invoke("settings-get-api-url");
     },
     setApiUrl: (url: string) => {
       return ipcRenderer.invoke("settings-set-api-url", url);
+    },
+    getVocabularyConfig: () => {
+      return ipcRenderer.invoke("settings-get-vocabulary-config");
+    },
+    setVocabularyConfig: (records: Record<string, string>) => {
+      return ipcRenderer.invoke("settings-set-vocabulary-config", records);
     },
   },
   path: {
@@ -249,6 +270,17 @@ contextBridge.exposeInMainWorld("__ENJOY_APP__", {
   camdict: {
     lookup: (word: string) => {
       return ipcRenderer.invoke("camdict-lookup", word);
+    },
+  },
+  dict: {
+    read: (filePath: string) => {
+      return ipcRenderer.invoke("dict-read", filePath);
+    },
+    lookup: (word: string, dict: string) => {
+      return ipcRenderer.invoke("dict-lookup", word, dict);
+    },
+    findResource: (key: string, resources: string[]) => {
+      return ipcRenderer.invoke("dict-find-resource", key, resources);
     },
   },
   audios: {
